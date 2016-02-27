@@ -11,24 +11,25 @@ fn one_to_thirtythree() {
     assert_eq!(get_fizz_buzz_woof_string(1..34), one_to_thirtythree);
 }
 
-fn matches(i: usize, n: usize, nc: char, as_string: &String, word: String) -> Vec<String> {
+fn matches(i: usize, i_as_string: &String, n: usize, word: &str) -> Vec<String> {
     let mut res = Vec::<String>::new();
+    let nc = ('0' as u8 + n as u8) as char;
     if i % n == 0 {
-        res.push(word.clone());
+        res.push(String::from(word));
     }
-    res.append(&mut as_string.chars()
-                             .filter(|c| *c == nc)
-                             .map(|_| word.clone())
-                             .collect::<Vec<String>>());
+    res.append(&mut i_as_string.chars()
+                               .filter(|c| *c == nc)
+                               .map(|_| String::from(word))
+                               .collect::<Vec<String>>());
     res
 }
 
 fn fizz_buzz_woof(i: usize) -> String {
     let mut res = Vec::<String>::new();
     let as_string = i.to_string();
-    res.append(&mut matches(i, 3, '3', &as_string, String::from("Fizz")));
-    res.append(&mut matches(i, 5, '5', &as_string, String::from("Buzz")));
-    res.append(&mut matches(i, 7, '7', &as_string, String::from("Woof")));
+    res.append(&mut matches(i, &as_string, 3, "Fizz"));
+    res.append(&mut matches(i, &as_string, 5, "Buzz"));
+    res.append(&mut matches(i, &as_string, 7, "Woof"));
     if res.is_empty() {
         res.push(i.to_string());
     } else {
