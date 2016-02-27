@@ -18,7 +18,7 @@ fn matches(i: usize, n: usize, nc: char, as_string: &String, word: String) -> Ve
     }
     res.append(&mut as_string.chars()
                              .filter(|c| *c == nc)
-                             .map(|c| c.to_string())
+                             .map(|_| word.clone())
                              .collect::<Vec<String>>());
     res
 }

@@ -1,6 +1,4 @@
 [package]
+authors = ["887 <2300887@googlemail.com>"]
 name = "fizz-buzz"
 version = "0.1.0"
-authors = ["887 <2300887@googlemail.com>"]
-
-[dependencies]
